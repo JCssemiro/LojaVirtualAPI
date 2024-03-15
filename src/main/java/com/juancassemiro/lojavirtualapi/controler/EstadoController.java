@@ -3,6 +3,7 @@ package com.juancassemiro.lojavirtualapi.controler;
 import com.juancassemiro.lojavirtualapi.dto.EstadoCadastroDto;
 import com.juancassemiro.lojavirtualapi.dto.EstadoDto;
 import com.juancassemiro.lojavirtualapi.service.EstadoService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -40,7 +41,7 @@ public class EstadoController {
     }
 
     @PostMapping
-    public ResponseEntity cadastrarEstado(@RequestBody EstadoCadastroDto dto, UriComponentsBuilder uriBuilder){
+    public ResponseEntity cadastrarEstado(@RequestBody @Valid EstadoCadastroDto dto, UriComponentsBuilder uriBuilder){
         try{
             EstadoDto estadoNovo = estadoService.cadastrarEstado(dto);
             URI uri = uriBuilder.path("/estado/{id}").buildAndExpand(estadoNovo.id()).toUri();
@@ -51,7 +52,7 @@ public class EstadoController {
     }
 
     @PutMapping
-    public ResponseEntity alterarEstado(@RequestBody EstadoDto dto){
+    public ResponseEntity alterarEstado(@RequestBody @Valid EstadoDto dto){
         try{
             EstadoDto estadoAlterado = estadoService.alterarEstado(dto);
             return ResponseEntity.status(HttpStatus.OK).body(estadoAlterado);
