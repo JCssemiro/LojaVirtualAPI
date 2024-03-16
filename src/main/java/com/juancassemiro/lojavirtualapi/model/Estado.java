@@ -18,6 +18,7 @@ public class Estado {
 
     private String nome;
 
+    @Column(name="sigla" ,unique = true)
     private String sigla;
 
     @Temporal(TemporalType.TIMESTAMP)
