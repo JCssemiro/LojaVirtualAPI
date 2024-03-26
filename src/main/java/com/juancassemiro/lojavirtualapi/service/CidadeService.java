@@ -31,8 +31,8 @@ public class CidadeService {
 
     public CidadeDto cadastrarCidade(CidadeCadastroDto dto){
         try{
-            Cidade novaCidade = cidadeRepository.save(new Cidade(dto));
-            return new CidadeDto(novaCidade);
+            Cidade cidadeCadastrada = new Cidade(dto);
+            return new CidadeDto(cidadeRepository.save(cidadeCadastrada));
         }catch(RuntimeException e){
             throw new RuntimeException(e.getMessage());
         }
