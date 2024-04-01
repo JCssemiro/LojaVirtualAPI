@@ -12,10 +12,9 @@ import java.util.Optional;
 public interface ProdutoRepository extends JpaRepository<Produto,Long> {
 
 
-    Boolean existsByMarca(Marca marca);
-    Boolean existsByCategoria(Categoria categoria);
 
     List<Produto> findByMarca(Marca marca);
 
     List<Produto> findByCategoria(Categoria categoria);
+
 }
