@@ -1,5 +1,6 @@
 package com.juancassemiro.lojavirtualapi.dto;
 
+import com.juancassemiro.lojavirtualapi.model.Cidade;
 import com.juancassemiro.lojavirtualapi.model.Usuario;
 import jakarta.validation.constraints.NotNull;
 
@@ -12,6 +13,7 @@ public record UsuarioDto(@NotNull Long id,
                          @NotNull String email ,
                          @NotNull String endereco,
                          @NotNull String cep,
+                         @NotNull Cidade cidade,
                          @NotNull Date dataCriacao,
                          @NotNull Date dataAtualizacao) {
 
@@ -23,7 +25,9 @@ public record UsuarioDto(@NotNull Long id,
                 usuario.getEmail(),
                 usuario.getEndereco(),
                 usuario.getCep(),
+                usuario.getCidade(),
                 usuario.getDataCriacao(),
                 usuario.getDataAtualizacao());
     }
+
 }

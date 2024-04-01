@@ -23,6 +23,9 @@ public class Usuario {
     private String email;
     private String endereco;
     private String cep;
+    @ManyToOne
+    @JoinColumn(name="id_cidade",referencedColumnName = "id")
+    private Cidade cidade;
     private Date dataCriacao;
     private Date dataAtualizacao;
 
@@ -32,11 +35,25 @@ public class Usuario {
     public Usuario(UsuarioCadastroDto dto) {
         this.login = dto.login();
         this.senha = dto.senha();
+        this.cpf = dto.cpf();
+        this.email = dto.email();
+        this.endereco = dto.endereco();
+        this.cep = dto.cep();
+        this.cidade = dto.cidade();
+        this.dataCriacao = new Date();
+        this.dataAtualizacao = new Date();
     }
 
     public Usuario(UsuarioDto dto){
         this.id = dto.id();
         this.login = dto.login();
         this.senha = dto.senha();
+        this.cpf = dto.cpf();
+        this.email = dto.email();
+        this.endereco = dto.endereco();
+        this.cep = dto.cep();
+        this.cidade = dto.cidade();
+        this.dataCriacao = dto.dataCriacao();
+        this.dataAtualizacao = new Date();
     }
 }
